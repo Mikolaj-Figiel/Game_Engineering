@@ -5,6 +5,8 @@ sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
 sf::Texture spritesheet;
 sf::Sprite invader;
 
+static sf::Clock clock;
+float dt = clock.restart().asSeconds();
 
 
 void Load() {
