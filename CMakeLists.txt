@@ -35,9 +35,10 @@ target_include_directories(2_INVADERS SYSTEM PRIVATE ${SFML_INCS})
 target_link_libraries(2_INVADERS sfml-graphics)
 
 #### copy these two and change to appropriate project name per project ####
-add_dependencies(2_INVADERS copy_resources)
 
 set_target_properties(2_INVADERS 
     PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY
     ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$(Configuration)
 )
+
+add_dependencies(2_INVADERS copy_resources)

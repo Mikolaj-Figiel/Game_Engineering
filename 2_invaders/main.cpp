@@ -5,6 +5,16 @@ sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
 sf::Texture spritesheet;
 sf::Sprite invader;
 
+
+
+void Load() {
+	if (!spritesheet.loadFromFile("res/img/invaders_sheet.png")) {
+		std::cerr << "Failed to load spritesheet!" << std::endl;
+	}
+	invader.setTexture(spritesheet);
+	invader.setTextureRect(sf::IntRect(sf::Vector2(0, 0), sf::Vector2(32, 32)));
+}
+
 void Update(double dt) {
     // Update Everything
 }
@@ -21,13 +31,7 @@ int main() {
 	bool shouldQuit = false;
 	float dt;
 
-	
-		if (!spritesheet.loadFromFile("res/img/invaders_sheet.png")) {
-			std::cerr << "Failed to load spritesheet!" << std::endl;
-		}
-		invader.setTexture(spritesheet);
-		invader.setTextureRect(sf::IntRect(sf::Vector2(0, 0), sf::Vector2(32, 32)));
-	
+	Load();
 	while (!shouldQuit) {
 		//Caluclate dt
 		//Update(dt);
