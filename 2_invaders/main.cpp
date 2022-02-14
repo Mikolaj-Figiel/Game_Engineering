@@ -1,12 +1,14 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "ship.h"
 
-sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+sf::RenderWindow window(sf::VideoMode(400, 400), "SFML works!");
+sf::RectangleShape box(sf::Vector2f(200.f, 200.f));
 sf::Texture spritesheet;
 sf::Sprite invader;
+std::vector<Ship *> ships;
 
-static sf::Clock clock;
-float dt = clock.restart().asSeconds();
+
 
 
 void Load() {
@@ -15,29 +17,36 @@ void Load() {
 	}
 	invader.setTexture(spritesheet);
 	invader.setTextureRect(sf::IntRect(sf::Vector2(0, 0), sf::Vector2(32, 32)));
+	
 }
 
-void Update(double dt) {
+void Update(sf::RenderWindow& window) {
     // Update Everything
+	static sf::Clock clock;
+	float dt = clock.restart().asSeconds();
 }
 
-void Render() {
+void Render(sf::RenderWindow &window) {
     // Draw Everything
+	window.draw(box);
 	window.draw(invader);
 }
 
 
 int main() {
 	//initialise and load
+	
+	box.setFillColor(sf::Color::Black);
+	
 
-	bool shouldQuit = false;
-	float dt;
 
 	Load();
-	while (!shouldQuit) {
-		//Caluclate dt
-		//Update(dt);
-		//Render(window);
+	while (window.isOpen()) {
+		//float dt = clock.restart().asSeconds();
+		window.clear();
+		Update(window);
+		Render(window);
+		window.display();
 		//Wait for Vsync
 	}
 	//Unload and shutdown
