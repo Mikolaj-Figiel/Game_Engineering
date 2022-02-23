@@ -1,0 +1,10 @@
+4 tile engine - notes
+
+const Keyboard::Key controls[4] = {
+    Keyboard::w, //  UP
+    Keyboard::a, //  LEFT
+    Keyboard::s, //  DOWN
+    Keyboard::d  //  RIGHT
+};
+
+.move(Vector2(Xdirection * _speed * dt, Ydirection * _speed * dt));
