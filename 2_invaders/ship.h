@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+extern std::vector<Ship*> ships;
+
 class Ship : public sf::Sprite {
 protected:
 	sf::IntRect _sprite;
@@ -14,4 +16,12 @@ public:
     virtual ~Ship() = 0;
     //Update, virtual so can be overridden, but not pure virtual
     virtual void Update(const float& dt);
+};
+class Invader : public Ship {
+public:
+    static bool direction;
+    static float speed;
+    Invader(sf::IntRect ir, sf::Vector2f pos);
+    Invader();
+    void Update(const float& dt) override;
 };
